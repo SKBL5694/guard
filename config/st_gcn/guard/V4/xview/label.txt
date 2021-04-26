@@ -1,0 +1,6 @@
+normal_bow/nod
+normal_shake_head
+normal_salute
+warning_cross
+warning_knife
+warning_shoot

@@ -1,0 +1,15 @@
+weights: ./work_dir/guard/body1or2/xview/epoch30_model.pt
+model_fps: 30
+
+# model
+model: net.st_gcn.Model
+model_args:
+  in_channels: 3
+  num_class: 8
+  edge_importance_weighting: True
+  graph_args:
+    layout: 'openpose'
+    strategy: 'spatial'
+    
+# training
+device: [0]

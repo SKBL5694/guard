@@ -1,0 +1,36 @@
+#!/usr/bin/env python
+import argparse
+import sys
+# import pdb
+# torchlight
+import torchlight
+from torchlight import import_class
+
+if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser(description='Processor collection')
+
+    # region register processor yapf: disable
+    processors = dict()
+    processors['recognition'] = import_class('processor_new.recognition.REC_Processor')
+    processors['demo_old'] = import_class('processor_new.demo_old.Demo')
+    processors['demo'] = import_class('processor_new.demo_realtime.DemoRealtime')
+    processors['demo_offline'] = import_class('processor_new.demo_offline.DemoOffline')
+    processors['demo_offline_pad'] = import_class('processor_new.demo_offline_pad.DemoOffline')
+    processors['demo_half'] = import_class('processor_new.demo_half.DemoRealtime')
+    #endregion yapf: enable
+
+    # add sub-parser
+    subparsers = parser.add_subparsers(dest='processor')
+    for k, p in processors.items():
+        subparsers.add_parser(k, parents=[p.get_parser()])
+
+    # read arguments
+    arg = parser.parse_args()
+    # pdb.set_trace()
+    # start
+    Processor = processors[arg.processor]
+    # pdb.set_trace()
+    p = Processor(sys.argv[2:])
+
+    p.start()

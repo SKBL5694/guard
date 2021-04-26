@@ -1,0 +1,10 @@
+throw
+sit
+stand
+clap
+cheer
+wave
+kick
+hopping
+jump
+point

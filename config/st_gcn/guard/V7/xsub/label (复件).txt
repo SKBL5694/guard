@@ -1,0 +1,4 @@
+warning_point
+normal_shake_head
+normal_salute
+warning_cross
